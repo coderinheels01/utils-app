@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Container, Nav, NavItem, NavLink } from "reactstrap";
+import ToggleComponent from "./components/ToggleComponent";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container fluid>
+        <Nav tabs>
+          <NavItem>
+            <NavLink active href="/toggle">
+              useToggle example
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Container>
+      <Routes>
+        <Route path="/" element={<ToggleComponent />} />
+      </Routes>
     </div>
   );
 }
