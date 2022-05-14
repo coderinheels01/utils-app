@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import App from "./App";
+import { shallow } from "enzyme";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("Api", () => {
+  let appComponent;
+  const shallowMount = () => {
+    if (!appComponent) appComponent = shallow(<App />);
+    return appComponent;
+  };
+
+  it("should render a div ", () => {
+    expect(shallowMount().find("div").length).toBe(1);
+  });
 });
