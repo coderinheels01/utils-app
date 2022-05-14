@@ -15,5 +15,27 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "testimonials": [
+    {
+      "id": "42",
+      "message": "AlgoExpert was my go-to course to ace those coding interviews. I really liked the depth of explanation in the video tutorials and the user-friendly interface. I guess AlgoExpert and a lot of hard work makes everything possible (journey from pre-sales to development)!"
+    },
+    {
+      "id": "43",
+      "message": "I would just like to point out that AlgoExpert helped me a lot to get an offer from Amazon - UK office (I accepted it). I think that AlgoExpert has everything you need in one place. It covers all important topics. I especially like the possibility to see hints in order to get an idea for the solution or to check the whole video explanation if necessary (which is very well explained!). You can literally prepare the whole coding part of the interview without changing the web browser tab."
+    },
+    {
+      "id": "44",
+      "message": "After reading a book on algorithms and data structures, I purchased AlgoExpert to prepare for interviews. Guys, seriously, this is an amazing product! I went through the questions at least 5 times before my interview. Now I am working at Google as a SWE. I honestly couldn't have gotten the offer without this product."
+    },
+    {
+      "id": "45",
+      "message": "AlgoExpert was instrumental to me getting the job at Microsoft. I was going through different sites and applications to help in my study of algorithms and data structures, but nothing was as thorough and clear as AlgoExpert. I am now starting as a Site Reliability Engineer II at Microsoft, thanks to this site!"
+    },
+    {
+      "id": "46",
+      "message": "AlgoExpert helped me build a very solid foundation to tackle most of the common problems you can encounter during the interview. The most valuable feature, by far, is the video walkthroughs for each problem which makes you understand how to approach the problem. If you want to build/improve your toolset for solving problems, AlgoExpert is worth every penny. Well done."
+    }
+  ]
 }
