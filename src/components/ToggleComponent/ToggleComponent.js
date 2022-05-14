@@ -1,11 +1,18 @@
 import React from "react";
-import { Button, ButtonGroup, Card, CardBody, CardHeader } from "reactstrap";
+import {
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  CardHeader,
+  TabPane
+} from "reactstrap";
 import useToggle from "../../hooks/useToggle";
 
 export const ToggleComponent = () => {
   const [value, setToggle] = useToggle(false);
   return (
-    <>
+    <TabPane tabId="1">
       <Card>
         <CardHeader>{value.toString()}</CardHeader>
         <CardBody>
@@ -22,7 +29,7 @@ export const ToggleComponent = () => {
           </ButtonGroup>
         </CardBody>
       </Card>
-    </>
+    </TabPane>
   );
 };
 export default ToggleComponent;

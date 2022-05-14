@@ -6,5 +6,7 @@ export const useDebounce = (callback, delay, dependencies) => {
   useEffect(() => {
     reset();
   }, [dependencies, reset]);
-  useEffect(() => clear(), []);
+  useEffect(() => {
+    clear();
+  }, [clear]);
 };

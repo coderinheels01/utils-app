@@ -6,9 +6,10 @@ import {
   CardBody,
   CardHeader,
   Spinner,
+  TabPane,
   UncontrolledAccordion
 } from "reactstrap";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
 import useToggle from "../../hooks/useToggle";
 
@@ -41,7 +42,7 @@ const DebounceComponent = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <>
+    <TabPane tabId="3">
       {value ? (
         <Spinner>Loading...</Spinner>
       ) : (
@@ -78,7 +79,7 @@ const DebounceComponent = () => {
           )}
         </Card>
       )}
-    </>
+    </TabPane>
   );
 };
 
