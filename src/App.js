@@ -17,7 +17,7 @@ const App = () => {
             <NavLink
               active={activeTab === "1"}
               onClick={() => {
-                navigate("/toggle");
+                navigate("/");
                 setActiveTab("1");
               }}
             >
