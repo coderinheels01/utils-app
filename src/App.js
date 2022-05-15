@@ -7,6 +7,7 @@ import DebounceComponent from "./components/DebounceComponent";
 import { useState } from "react";
 import UpdateEffectComponent from "./components/UpdateEffectComponent";
 import ArrayComponent from "./components/ArrayComponent";
+import PreviousComponent from "./components/PreviousComponent";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -70,6 +71,17 @@ const App = () => {
               useArray example
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink
+              active={activeTab === "6"}
+              onClick={() => {
+                navigate("/previous");
+                setActiveTab("6");
+              }}
+            >
+              usePrevious example
+            </NavLink>
+          </NavItem>
         </Nav>
       </Container>
 
@@ -84,6 +96,7 @@ const App = () => {
             element={<UpdateEffectComponent />}
           />
           <Route exact path="/array" element={<ArrayComponent />} />
+          <Route exact path="/previous" element={<PreviousComponent />} />
         </Routes>
       </TabContent>
     </div>
