@@ -4,7 +4,9 @@ import { useState } from "react";
 
 export const defaultArray = [1, 2, 3, 4, 5, 6, 7];
 const ArrayComponent = () => {
-  const { array, push, remove, update, filter, set } = useArray(defaultArray);
+  const { array, push, remove, update, filter, set, clear } = useArray(
+    defaultArray
+  );
   const [n, setN] = useState();
   const [value, setValue] = useState();
   const [index, setIndex] = useState(0);
@@ -117,12 +119,23 @@ const ArrayComponent = () => {
             }}
           >
             <Button
+              style={{
+                marginRight: "10px"
+              }}
               onClick={() => {
                 set(defaultArray);
               }}
               color="primary"
             >
               Reset Array
+            </Button>
+            <Button
+              onClick={() => {
+                clear();
+              }}
+              color="primary"
+            >
+              Clear Array
             </Button>
           </div>
         </CardBody>
