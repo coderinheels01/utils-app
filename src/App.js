@@ -91,7 +91,7 @@ const App = () => {
                 setActiveTab("7");
               }}
             >
-              usePrevious example
+              useStateWithHistory example
             </NavLink>
           </NavItem>
         </Nav>
