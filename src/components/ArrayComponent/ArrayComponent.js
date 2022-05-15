@@ -2,8 +2,10 @@ import { Button, Card, CardBody, CardHeader, TabPane } from "reactstrap";
 import { useArray } from "../../hooks/useArray";
 import { useState } from "react";
 
+export const defaultArray = [1, 2, 3, 4, 5, 6, 7];
 const ArrayComponent = () => {
-  const { array, push, remove, update } = useArray([1, 2, 3, 4, 5, 6, 7]);
+  const { array, push, remove, update, filter, set } = useArray(defaultArray);
+  const [n, setN] = useState();
   const [value, setValue] = useState();
   const [index, setIndex] = useState(0);
   const [updateValue, setUpdateValue] = useState();
@@ -88,6 +90,39 @@ const ArrayComponent = () => {
               color="primary"
             >
               Update
+            </Button>
+          </div>
+          <div
+            style={{
+              marginTop: "20px"
+            }}
+          >
+            <input
+              onChange={event => setN(event.target.value)}
+              style={{ marginRight: "10px" }}
+              placeholder="Enter a number "
+            />
+            <Button
+              onClick={() => {
+                filter(elem => elem < n);
+              }}
+              color="primary"
+            >
+              Filter less than
+            </Button>
+          </div>
+          <div
+            style={{
+              marginTop: "20px"
+            }}
+          >
+            <Button
+              onClick={() => {
+                set(defaultArray);
+              }}
+              color="primary"
+            >
+              Reset Array
             </Button>
           </div>
         </CardBody>

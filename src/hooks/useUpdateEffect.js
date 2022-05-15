@@ -9,5 +9,5 @@ export const useUpdateEffect = (callback, dependencies) => {
     } else {
       return callback();
     }
-  }, [dependencies]);
+  }, [callback, dependencies]);
 };

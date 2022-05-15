@@ -5,6 +5,9 @@ export const useArray = defaultArray => {
   const push = element => {
     setArray(prevArray => [...prevArray, element]);
   };
+
+  const filter = callback => setArray(prevArray => prevArray.filter(callback));
+
   const update = (index, element) => {
     if (index > array.length || index < 0) {
       alert("Index out of bound");
@@ -32,5 +35,5 @@ export const useArray = defaultArray => {
   const clear = () => {
     setArray([]);
   };
-  return { array, push, update, remove, clear };
+  return { array, set: setArray, filter, push, update, remove, clear };
 };
