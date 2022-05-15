@@ -14,7 +14,6 @@ const PreviousComponent = () => {
   const pages = ["home", "clients", "accounts", "users"];
   const [value, setValue] = useState();
   const previousValue = usePrevious(value);
-
   return (
     <TabPane tabId="6">
       <Card>

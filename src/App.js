@@ -9,9 +9,14 @@ import UpdateEffectComponent from "./components/UpdateEffectComponent";
 import ArrayComponent from "./components/ArrayComponent";
 import PreviousComponent from "./components/PreviousComponent";
 import HistoryComponent from "./components/HistoryComponent";
+import { useLocalStorage, useSessionStorage } from "./hooks/useStorage";
+import LocalStorageComponent from "./components/LocalStorageComponent";
+import SessionStorageComponent from "./components/SessionStorageComponent";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("1");
+  const [localHistory, setLocalHistory] = useLocalStorage("history", []);
+  const [sessionHistory, setSessionHistory] = useSessionStorage("history", []);
   const navigate = useNavigate();
   return (
     <div className="App" style={{ padding: "50px" }}>
@@ -23,6 +28,8 @@ const App = () => {
               onClick={() => {
                 navigate("/");
                 setActiveTab("1");
+                setLocalHistory([...localHistory, "useToggle example"]);
+                setSessionHistory([...sessionHistory, "useToggle example"]);
               }}
             >
               useToggle example
@@ -34,6 +41,8 @@ const App = () => {
               onClick={() => {
                 navigate("/timeout");
                 setActiveTab("2");
+                setLocalHistory([...localHistory, "useTimeout example"]);
+                setSessionHistory([...sessionHistory, "useTimeout example"]);
               }}
             >
               useTimeout example
@@ -45,6 +54,8 @@ const App = () => {
               onClick={() => {
                 navigate("/debounce");
                 setActiveTab("3");
+                setLocalHistory([...localHistory, "useDebounce example"]);
+                setSessionHistory([...sessionHistory, "useDebounce example"]);
               }}
             >
               useDebounce example
@@ -56,6 +67,11 @@ const App = () => {
               onClick={() => {
                 navigate("/update-effect");
                 setActiveTab("4");
+                setLocalHistory([...localHistory, "useUpdateEffect example"]);
+                setSessionHistory([
+                  ...sessionHistory,
+                  "useUpdateEffect example"
+                ]);
               }}
             >
               useUpdateEffect example
@@ -67,6 +83,8 @@ const App = () => {
               onClick={() => {
                 navigate("/array");
                 setActiveTab("5");
+                setLocalHistory([...localHistory, "useArray example"]);
+                setSessionHistory([...sessionHistory, "useArray example"]);
               }}
             >
               useArray example
@@ -78,6 +96,8 @@ const App = () => {
               onClick={() => {
                 navigate("/previous");
                 setActiveTab("6");
+                setLocalHistory([...localHistory, "usePrevious example"]);
+                setSessionHistory([...sessionHistory, "usePrevious example"]);
               }}
             >
               usePrevious example
@@ -89,9 +109,49 @@ const App = () => {
               onClick={() => {
                 navigate("/history");
                 setActiveTab("7");
+                setLocalHistory([
+                  ...localHistory,
+                  "useStateWithHistory example"
+                ]);
+                setSessionHistory([
+                  ...sessionHistory,
+                  "useStateWithHistory example"
+                ]);
               }}
             >
               useStateWithHistory example
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              active={activeTab === "8"}
+              onClick={() => {
+                navigate("/local-storage");
+                setActiveTab("8");
+                setLocalHistory([...localHistory, "useLocalStorage example"]);
+                setSessionHistory([
+                  ...sessionHistory,
+                  "useLocalStorage example"
+                ]);
+              }}
+            >
+              useLocalStorage example
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              active={activeTab === "9"}
+              onClick={() => {
+                navigate("/session-storage");
+                setActiveTab("9");
+                setLocalHistory([...localHistory, "useLocalStorage example"]);
+                setSessionHistory([
+                  ...sessionHistory,
+                  "useSessionStorage example"
+                ]);
+              }}
+            >
+              useSessionStorage example
             </NavLink>
           </NavItem>
         </Nav>
@@ -110,6 +170,16 @@ const App = () => {
           <Route exact path="/array" element={<ArrayComponent />} />
           <Route exact path="/previous" element={<PreviousComponent />} />
           <Route exact path="/history" element={<HistoryComponent />} />
+          <Route
+            exact
+            path="/local-storage"
+            element={<LocalStorageComponent />}
+          />
+          <Route
+            exact
+            path="/session-storage"
+            element={<SessionStorageComponent />}
+          />
         </Routes>
       </TabContent>
     </div>
