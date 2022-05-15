@@ -5,6 +5,7 @@ import ToggleComponent from "./components/ToggleComponent";
 import TimeoutComponent from "./components/TimeoutComponent";
 import DebounceComponent from "./components/DebounceComponent";
 import { useState } from "react";
+import UpdateEffectComponent from "./components/UpdateEffectComponent";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -46,6 +47,17 @@ const App = () => {
               useDebounce example
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink
+              active={activeTab === "4"}
+              onClick={() => {
+                navigate("/update");
+                setActiveTab("4");
+              }}
+            >
+              useUpdateEffect example
+            </NavLink>
+          </NavItem>
         </Nav>
       </Container>
 
@@ -54,6 +66,7 @@ const App = () => {
           <Route path="/" element={<ToggleComponent />} />
           <Route exact path="/timeout" element={<TimeoutComponent />} />
           <Route exact path="/debounce" element={<DebounceComponent />} />
+          <Route exact path="/update" element={<UpdateEffectComponent />} />
         </Routes>
       </TabContent>
     </div>
