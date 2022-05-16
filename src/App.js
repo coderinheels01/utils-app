@@ -71,14 +71,20 @@ const App = () => {
                 navigate("/debounce");
                 setActiveTab("3");
                 setLocalHistory(
-                  makeArrayFromStorage(localHistory, "useDebounce example")
+                  makeArrayFromStorage(
+                    localHistory,
+                    "useFetch with useDebounce example"
+                  )
                 );
                 setSessionHistory(
-                  makeArrayFromStorage(sessionHistory, "useDebounce example")
+                  makeArrayFromStorage(
+                    sessionHistory,
+                    "useFetch with useDebounce example"
+                  )
                 );
               }}
             >
-              useDebounce example
+              useFetch with useDebounce example
             </NavLink>
           </NavItem>
           <NavItem>

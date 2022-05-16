@@ -10,40 +10,24 @@ import {
   UncontrolledAccordion
 } from "reactstrap";
 import React, { useEffect, useState } from "react";
-import { useDebounce } from "../../hooks/useDebounce";
-import useToggle from "../../hooks/useToggle";
+import { useFetch } from "../../hooks/useFetch";
 
+const BASE_URL = "http://localhost:3001/testimonials";
 const DebounceComponent = () => {
-  const [testimonials, setTestimonials] = useState([]);
-  const [error, setError] = useState();
-  const [id, setId] = useState("");
-  const [value, toggleValue] = useToggle(false);
-
-  async function fetchTestimonial() {
-    toggleValue();
-    const response = await fetch(
-      `http://localhost:3001/testimonials${id && `?id=${id}`}`
-    );
-    if (!response.ok) setError(response);
-    else {
-      if (error) setError(null);
-      const testimonials = await response.json();
-      if (testimonials.length <= 0)
-        setError({ status: "404", statusText: "Not Found" });
-      setTestimonials(testimonials);
-    }
-    toggleValue();
-  }
-
-  useDebounce(fetchTestimonial, 1000, id);
-
+  const [id, setId] = useState();
+  const [testimonials, error, loading] = useFetch(
+    BASE_URL,
+    `${id && `?id=${id}`}`,
+    1000,
+    id
+  );
   useEffect(() => {
-    fetchTestimonial();
-    // eslint-disable-next-line
+    setId("");
   }, []);
+
   return (
     <TabPane tabId="3">
-      {value ? (
+      {loading ? (
         <Spinner>Loading...</Spinner>
       ) : (
         <Card>
@@ -63,16 +47,17 @@ const DebounceComponent = () => {
             <CardBody>
               <div>
                 <UncontrolledAccordion defaultOpen="1" open={false}>
-                  {testimonials.map(testimonial => (
-                    <AccordionItem key={testimonial.id}>
-                      <AccordionHeader targetId={testimonial.id}>
-                        <strong> Testimonial with id {testimonial.id}</strong>
-                      </AccordionHeader>
-                      <AccordionBody accordionId={testimonial.id}>
-                        {testimonial.message}
-                      </AccordionBody>
-                    </AccordionItem>
-                  ))}
+                  {testimonials &&
+                    testimonials.map(testimonial => (
+                      <AccordionItem key={testimonial.id}>
+                        <AccordionHeader targetId={testimonial.id}>
+                          <strong> Testimonial with id {testimonial.id}</strong>
+                        </AccordionHeader>
+                        <AccordionBody accordionId={testimonial.id}>
+                          {testimonial.message}
+                        </AccordionBody>
+                      </AccordionItem>
+                    ))}
                 </UncontrolledAccordion>
               </div>
             </CardBody>
