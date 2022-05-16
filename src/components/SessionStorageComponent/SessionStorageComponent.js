@@ -26,7 +26,7 @@ const SessionStorageComponent = () => {
           </Nav>
         </CardHeader>
         <CardBody>
-          <Button onClick={() => removeHistory()}> Clear Local Storage</Button>
+          <Button onClick={() => removeHistory()}> Clear Session Storage</Button>
         </CardBody>
       </Card>
     </TabPane>
