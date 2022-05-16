@@ -8,17 +8,15 @@ import {
   CardHeader,
   Button
 } from "reactstrap";
-import { useSessionStorage } from "../../hooks/useStorage";
 
-const SessionStorageComponent = () => {
-  const [history, removeHistory] = useSessionStorage("history", []);
+const SessionStorageComponent = ({ sessionHistory, removeSessionHistory }) => {
   return (
     <TabPane tabId="9">
       <Card>
         <CardHeader>
           <Nav>
-            {history &&
-              history.map((v, i) => (
+            {sessionHistory &&
+              sessionHistory.map((v, i) => (
                 <NavItem key={i}>
                   <NavLink>{v}</NavLink>
                 </NavItem>
@@ -26,7 +24,10 @@ const SessionStorageComponent = () => {
           </Nav>
         </CardHeader>
         <CardBody>
-          <Button onClick={() => removeHistory()}> Clear Session Storage</Button>
+          <Button onClick={() => removeSessionHistory()}>
+            {" "}
+            Clear Session Storage
+          </Button>
         </CardBody>
       </Card>
     </TabPane>

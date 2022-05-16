@@ -8,17 +8,15 @@ import {
   CardHeader,
   Button
 } from "reactstrap";
-import { useLocalStorage } from "../../hooks/useStorage";
 
-const LocalStorageComponent = () => {
-  const [history, removeHistory] = useLocalStorage("history", []);
+const LocalStorageComponent = ({ localHistory, removeLocalHistory }) => {
   return (
     <TabPane tabId="8">
       <Card>
         <CardHeader>
           <Nav>
-            {history &&
-              history.map((v, i) => (
+            {localHistory &&
+              localHistory.map((v, i) => (
                 <NavItem key={i}>
                   <NavLink>{v}</NavLink>
                 </NavItem>
@@ -26,7 +24,9 @@ const LocalStorageComponent = () => {
           </Nav>
         </CardHeader>
         <CardBody>
-          <Button onClick={() => removeHistory()}> Clear Local Storage</Button>
+          <Button onClick={() => removeLocalHistory()}>
+            Clear Local Storage
+          </Button>
         </CardBody>
       </Card>
     </TabPane>
