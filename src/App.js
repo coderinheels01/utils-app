@@ -12,11 +12,14 @@ import HistoryComponent from "./components/HistoryComponent";
 import { useLocalStorage, useSessionStorage } from "./hooks/useStorage";
 import LocalStorageComponent from "./components/LocalStorageComponent";
 import SessionStorageComponent from "./components/SessionStorageComponent";
-import { storageSetter } from "./utils/storageSetter";
+import { makeArrayFromStorage } from "./utils/makeArrayFromStorage";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("1");
-  // const [localHistory, setLocalHistory] = useLocalStorage("localHistory", []);
+  const [localHistory, setLocalHistory, removeLocalHistory] = useLocalStorage(
+    "localHistory",
+    []
+  );
   const [
     sessionHistory,
     setSessionHistory,
@@ -33,9 +36,11 @@ const App = () => {
               onClick={() => {
                 navigate("/");
                 setActiveTab("1");
-                //setLocalHistory([...localHistory, "useToggle example"]);
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "useToggle example")
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "useToggle example")
+                  makeArrayFromStorage(sessionHistory, "useToggle example")
                 );
               }}
             >
@@ -48,9 +53,11 @@ const App = () => {
               onClick={() => {
                 navigate("/timeout");
                 setActiveTab("2");
-                //setLocalHistory([...localHistory, "useTimeout example"]);
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "useTimeout example")
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "useTimeout example")
+                  makeArrayFromStorage(sessionHistory, "useTimeout example")
                 );
               }}
             >
@@ -63,9 +70,11 @@ const App = () => {
               onClick={() => {
                 navigate("/debounce");
                 setActiveTab("3");
-                //setLocalHistory([...localHistory, "useDebounce example"]);
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "useDebounce example")
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "useDebounce example")
+                  makeArrayFromStorage(sessionHistory, "useDebounce example")
                 );
               }}
             >
@@ -78,9 +87,14 @@ const App = () => {
               onClick={() => {
                 navigate("/update-effect");
                 setActiveTab("4");
-                //setLocalHistory([...localHistory, "useUpdateEffect example"]);
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "useUpdateEffect example")
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "useUpdateEffect example")
+                  makeArrayFromStorage(
+                    sessionHistory,
+                    "useUpdateEffect example"
+                  )
                 );
               }}
             >
@@ -93,9 +107,11 @@ const App = () => {
               onClick={() => {
                 navigate("/array");
                 setActiveTab("5");
-                //setLocalHistory([...localHistory, "useArray example"]);
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "useArray example")
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "useArray example")
+                  makeArrayFromStorage(sessionHistory, "useArray example")
                 );
               }}
             >
@@ -108,9 +124,11 @@ const App = () => {
               onClick={() => {
                 navigate("/previous");
                 setActiveTab("6");
-                //setLocalHistory([...localHistory, "usePrevious example"]);
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "usePrevious example")
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "usePrevious example")
+                  makeArrayFromStorage(sessionHistory, "usePrevious example")
                 );
               }}
             >
@@ -123,12 +141,17 @@ const App = () => {
               onClick={() => {
                 navigate("/history");
                 setActiveTab("7");
-                // setLocalHistory([
-                //   ...localHistory,
-                //   "useStateWithHistory example"
-                // ]);
+                setLocalHistory(
+                  makeArrayFromStorage(
+                    localHistory,
+                    "useStateWithHistory example"
+                  )
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "useStateWithHistory example")
+                  makeArrayFromStorage(
+                    sessionHistory,
+                    "useStateWithHistory example"
+                  )
                 );
               }}
             >
@@ -141,9 +164,14 @@ const App = () => {
               onClick={() => {
                 navigate("/local-storage");
                 setActiveTab("8");
-                //setLocalHistory([...localHistory, "useLocalStorage example"]);
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "useLocalStorage example")
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "useLocalStorage example")
+                  makeArrayFromStorage(
+                    sessionHistory,
+                    "useLocalStorage example"
+                  )
                 );
               }}
             >
@@ -156,9 +184,14 @@ const App = () => {
               onClick={() => {
                 navigate("/session-storage");
                 setActiveTab("9");
-                //setLocalHistory([...localHistory, "useLocalStorage example"]);
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "useLocalStorage example")
+                );
                 setSessionHistory(
-                  storageSetter(sessionHistory, "useSessionStorage example")
+                  makeArrayFromStorage(
+                    sessionHistory,
+                    "useSessionStorage example"
+                  )
                 );
               }}
             >
@@ -184,7 +217,12 @@ const App = () => {
           <Route
             exact
             path="/local-storage"
-            element={<LocalStorageComponent />}
+            element={
+              <LocalStorageComponent
+                localHistory={localHistory}
+                removeLocalHistory={removeLocalHistory}
+              />
+            }
           />
           <Route
             exact
