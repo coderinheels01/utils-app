@@ -14,16 +14,13 @@ import { useFetch } from "../../hooks/shared/useFetch";
 
 const BASE_URL = "http://localhost:3001/testimonials";
 const DebounceComponent = () => {
-  const [id, setId] = useState();
-  const [testimonials, error, loading] = useFetch(
+  const [id, setId] = useState("");
+  const [testimonials, error, loading, hasMore] = useFetch(
     BASE_URL,
     `${id && `?id=${id}`}`,
     1000,
     id
   );
-  useEffect(() => {
-    setId("");
-  }, []);
 
   return (
     <TabPane tabId="3">
