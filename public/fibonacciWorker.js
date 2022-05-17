@@ -6,6 +6,6 @@ onmessage = e => {
   const result = fib(num);
   postMessage({
     result,
-    time: new Date().getTime() - startTime
+    time: new Date(new Date().getTime() - startTime).getSeconds()
   });
 };

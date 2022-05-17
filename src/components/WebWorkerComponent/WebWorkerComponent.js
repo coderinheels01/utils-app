@@ -34,7 +34,7 @@ const WebWorkerComponent = () => {
     <TabPane tabId="10">
       <Card>
         <CardHeader>
-          <div style={{ marginBottom: "10px", color: "blue" }}>
+          <div style={{ marginBottom: "10px", color: "#d63384" }}>
             <strong> Calculate Fibonacci</strong>{" "}
           </div>
           <br />
@@ -83,10 +83,7 @@ const WebWorkerComponent = () => {
                 data.fibonacci.map((v, i) => (
                   <ListGroupItem key={i}>
                     Fibonacci for {v.n} is {v.data.result} <br />
-                    time taken: {new Date(
-                      Number(v.data.time)
-                    ).getSeconds()}{" "}
-                    seconds
+                    time taken: {v.data.time} seconds
                   </ListGroupItem>
                 ))}
             </ListGroup>
