@@ -23,6 +23,7 @@ const WebWorkerComponent = () => {
   const [n, setN] = useState();
   const runWorker = useCallback(n => {
     const worker = new window.Worker("./fibonacciWorker.js");
+    dispatch(calculateFibonacciRequest());
     worker.postMessage({ num: n });
     worker.onerror = error => dispatch(calculateFibonacciError(error));
     worker.onmessage = e => {
@@ -35,7 +36,7 @@ const WebWorkerComponent = () => {
       <Card>
         <CardHeader>
           <div style={{ marginBottom: "10px", color: "#d63384" }}>
-            <strong> Calculate Fibonacci</strong>{" "}
+            <strong> Calculate Fibonacci up to N</strong>{" "}
           </div>
           <br />
           <input
