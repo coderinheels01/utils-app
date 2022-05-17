@@ -6,7 +6,6 @@ import { usePrevious } from "./usePrevious";
 export const useFetch = (url, options, delay, dependencies) => {
   const [error, setError] = useState();
   const [data, setData] = useState([]);
-  const previousData = usePrevious(data);
   const [loading, toggleLoading] = useToggle(false);
   const [hasMore, setHasMore] = useState(false);
 
@@ -16,7 +15,7 @@ export const useFetch = (url, options, delay, dependencies) => {
     if (!response.ok) setError(response);
     else {
       const data = await response.json();
-      setData(data);
+      setData(previousData => [...previousData, ...data]);
       setHasMore(data.length > 0);
     }
     toggleLoading();
@@ -26,6 +25,5 @@ export const useFetch = (url, options, delay, dependencies) => {
   }, []);
 
   useDebounce(fetchFunc, delay, dependencies);
-  const allData = previousData ? [...previousData, ...data] : data;
-  return [allData, loading, hasMore, error];
+  return [data, loading, hasMore, error];
 };
