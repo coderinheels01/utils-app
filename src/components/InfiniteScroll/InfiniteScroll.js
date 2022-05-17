@@ -1,13 +1,4 @@
-import {
-  TabPane,
-  CardBody,
-  Card,
-  Spinner,
-  UncontrolledAccordion,
-  AccordionItem,
-  AccordionHeader,
-  AccordionBody
-} from "reactstrap";
+import { TabPane, CardBody, Card, Spinner } from "reactstrap";
 import { useFetch } from "../../hooks/shared/useFetch";
 import React, { useCallback, useRef, useState } from "react";
 
@@ -25,7 +16,7 @@ const InfiniteScroll = () => {
     if (loading) return;
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
-      if (entries && entries[0].isIntersecting) {
+      if (entries && entries[0].isIntersecting && hasMore) {
         setPageNumber(prevPageNumber => prevPageNumber + 1);
       }
     });
@@ -41,43 +32,44 @@ const InfiniteScroll = () => {
           </CardBody>
         ) : (
           <CardBody>
-            <div>
-              <UncontrolledAccordion defaultOpen="1" open={false}>
-                {testimonials &&
-                  testimonials.map((testimonial, index) => {
-                    if (testimonials.length === index + 1) {
-                      return (
-                        <div ref={lastElementRef} key={index}>
-                          <AccordionItem>
-                            <AccordionHeader targetId={testimonial.id}>
-                              <strong>
-                                Testimonial with id {testimonial.id}
-                              </strong>
-                            </AccordionHeader>
-                            <AccordionBody accordionId={testimonial.id}>
-                              {testimonial.message}
-                            </AccordionBody>
-                          </AccordionItem>
+            <div style={{ height: "calc(100vh - 200px)", overflow: "scroll" }}>
+              {testimonials &&
+                testimonials.map((testimonial, index) => {
+                  if (testimonials.length === index + 1) {
+                    return (
+                      <div
+                        ref={lastElementRef}
+                        key={index}
+                        style={{
+                          marginLeft: "100px",
+                          marginRight: "100px"
+                        }}
+                      >
+                        <div style={{ backgroundColor: "#D3D3D3" }}>
+                          <strong>Testimonial with id {testimonial.id}</strong>
                         </div>
-                      );
-                    } else {
-                      return (
-                        <div key={index}>
-                          <AccordionItem>
-                            <AccordionHeader targetId={testimonial.id}>
-                              <strong>
-                                Testimonial with id {testimonial.id}
-                              </strong>
-                            </AccordionHeader>
-                            <AccordionBody accordionId={testimonial.id}>
-                              {testimonial.message}
-                            </AccordionBody>
-                          </AccordionItem>
+                        <p> {testimonial.message}</p>
+                        <hr />
+                      </div>
+                    );
+                  } else {
+                    return (
+                      <div
+                        key={index}
+                        style={{
+                          marginLeft: "100px",
+                          marginRight: "100px"
+                        }}
+                      >
+                        <div style={{ backgroundColor: "#D3D3D3" }}>
+                          <strong>Testimonial with id {testimonial.id}</strong>
                         </div>
-                      );
-                    }
-                  })}
-              </UncontrolledAccordion>
+                        <p> {testimonial.message}</p>
+                        <hr />
+                      </div>
+                    );
+                  }
+                })}
             </div>
           </CardBody>
         )}
