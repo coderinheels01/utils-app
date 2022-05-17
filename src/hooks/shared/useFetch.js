@@ -20,7 +20,7 @@ export const useFetch = (url, options, delay, dependencies) => {
     toggleLoading();
   };
   useEffect(() => {
-    fetchFunc().then(r => console.log(r));
+    fetchFunc();
   }, []);
 
   useDebounce(fetchFunc, delay, dependencies);
