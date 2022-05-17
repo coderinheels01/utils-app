@@ -13,6 +13,7 @@ import { useLocalStorage, useSessionStorage } from "./hooks/useStorage";
 import LocalStorageComponent from "./components/LocalStorageComponent";
 import SessionStorageComponent from "./components/SessionStorageComponent";
 import { makeArrayFromStorage } from "./utils/makeArrayFromStorage";
+import WebWorkerComponent from "./components/WebWorkerComponent";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -204,6 +205,23 @@ const App = () => {
               useSessionStorage example
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink
+              active={activeTab === "10"}
+              onClick={() => {
+                navigate("/web-worker");
+                setActiveTab("10");
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "WebWorker example")
+                );
+                setSessionHistory(
+                  makeArrayFromStorage(sessionHistory, "WebWorker example")
+                );
+              }}
+            >
+              WebWorker example
+            </NavLink>
+          </NavItem>
         </Nav>
       </Container>
 
@@ -240,6 +258,8 @@ const App = () => {
               />
             }
           />
+          //WebWorkerComponent
+          <Route exact path="/web-worker" element={<WebWorkerComponent />} />
         </Routes>
       </TabContent>
     </div>
