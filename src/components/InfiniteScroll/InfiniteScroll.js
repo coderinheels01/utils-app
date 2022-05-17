@@ -5,23 +5,26 @@ import React, { useCallback, useRef, useState } from "react";
 const BASE_URL = "http://localhost:3001/testimonials";
 const InfiniteScroll = () => {
   const [pageNumber, setPageNumber] = useState(1);
-  const [testimonials, error, loading, hasMore] = useFetch(
+  const [testimonials, loading, hasMore, error] = useFetch(
     BASE_URL,
     `?_page=${pageNumber}&_limit=20`,
     1000,
     pageNumber
   );
   const observer = useRef();
-  const lastElementRef = useCallback(lastNode => {
-    if (loading) return;
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver(entries => {
-      if (entries && entries[0].isIntersecting && hasMore) {
-        setPageNumber(prevPageNumber => prevPageNumber + 1);
-      }
-    });
-    if (lastNode) observer.current.observe(lastNode);
-  }, []);
+  const lastElementRef = useCallback(
+    lastNode => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver(entries => {
+        if (entries && entries[0].isIntersecting && hasMore) {
+          setPageNumber(prevPageNumber => prevPageNumber + 1);
+        }
+      });
+      if (lastNode) observer.current.observe(lastNode);
+    },
+    [loading, hasMore]
+  );
 
   return (
     <TabPane tabId="11">
