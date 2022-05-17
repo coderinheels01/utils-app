@@ -24,5 +24,7 @@ export const fibonacciReducer = (state = fibonacciInitialState, action) => {
       return { ...state, error: action.error, loading: false };
     case CALCULATE_FIBONACCI_CLEAR:
       return { ...fibonacciInitialState };
+    default:
+      return state;
   }
 };

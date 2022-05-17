@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useTimeout from "../../hooks/useTimeOut";
+import useTimeout from "../../hooks/shared/useTimeOut";
 import {
   Button,
   ButtonGroup,

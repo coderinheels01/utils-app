@@ -8,7 +8,7 @@ import {
   NavLink,
   TabPane
 } from "reactstrap";
-import { useStateWithHistory } from "../../hooks/useStateWithHistory";
+import { useStateWithHistory } from "../../hooks/shared/useStateWithHistory";
 
 const HistoryComponent = () => {
   const pages = ["home", "clients", "accounts", "users"];

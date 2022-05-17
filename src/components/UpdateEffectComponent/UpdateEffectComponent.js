@@ -1,5 +1,5 @@
 import { Button, Card, CardBody, CardHeader, TabPane } from "reactstrap";
-import { useUpdateEffect } from "../../hooks/useUpdateEffect";
+import { useUpdateEffect } from "../../hooks/shared/useUpdateEffect";
 import React, { useState } from "react";
 
 const UpdateEffectComponent = () => {

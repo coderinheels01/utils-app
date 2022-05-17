@@ -9,7 +9,7 @@ import UpdateEffectComponent from "./components/UpdateEffectComponent";
 import ArrayComponent from "./components/ArrayComponent";
 import PreviousComponent from "./components/PreviousComponent";
 import HistoryComponent from "./components/HistoryComponent";
-import { useLocalStorage, useSessionStorage } from "./hooks/useStorage";
+import { useLocalStorage, useSessionStorage } from "./hooks/shared/useStorage";
 import LocalStorageComponent from "./components/LocalStorageComponent";
 import SessionStorageComponent from "./components/SessionStorageComponent";
 import { makeArrayFromStorage } from "./utils/makeArrayFromStorage";
@@ -258,7 +258,7 @@ const App = () => {
               />
             }
           />
-          //WebWorkerComponent
+          WebWorkerComponent
           <Route exact path="/web-worker" element={<WebWorkerComponent />} />
         </Routes>
       </TabContent>

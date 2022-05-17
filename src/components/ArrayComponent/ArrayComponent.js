@@ -1,5 +1,5 @@
 import { Button, Card, CardBody, CardHeader, TabPane } from "reactstrap";
-import { useArray } from "../../hooks/useArray";
+import { useArray } from "../../hooks/shared/useArray";
 import { useState } from "react";
 
 export const defaultArray = [1, 2, 3, 4, 5, 6, 7];

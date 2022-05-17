@@ -10,7 +10,7 @@ import {
   UncontrolledAccordion
 } from "reactstrap";
 import React, { useEffect, useState } from "react";
-import { useFetch } from "../../hooks/useFetch";
+import { useFetch } from "../../hooks/shared/useFetch";
 
 const BASE_URL = "http://localhost:3001/testimonials";
 const DebounceComponent = () => {

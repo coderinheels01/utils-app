@@ -7,7 +7,7 @@ import {
   CardHeader,
   TabPane
 } from "reactstrap";
-import useToggle from "../../hooks/useToggle";
+import useToggle from "../../hooks/shared/useToggle";
 
 export const ToggleComponent = () => {
   const [value, setToggle] = useToggle(false);

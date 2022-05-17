@@ -7,7 +7,7 @@ import {
   NavLink,
   TabPane
 } from "reactstrap";
-import { usePrevious } from "../../hooks/usePrevious";
+import { usePrevious } from "../../hooks/shared/usePrevious";
 import { useState } from "react";
 
 const PreviousComponent = () => {
