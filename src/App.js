@@ -15,6 +15,7 @@ import SessionStorageComponent from "./components/SessionStorageComponent";
 import { makeArrayFromStorage } from "./utils/makeArrayFromStorage";
 import WebWorkerComponent from "./components/WebWorkerComponent";
 import InfiniteScroll from "./components/InfiniteScroll";
+import FileStructure from "./components/FileStructure/FileStructure";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -243,6 +244,23 @@ const App = () => {
               Infinite Scroll example
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink
+              active={activeTab === "12"}
+              onClick={() => {
+                navigate("/folders");
+                setActiveTab("12");
+                setLocalHistory(
+                  makeArrayFromStorage(localHistory, "Folders Example")
+                );
+                setSessionHistory(
+                  makeArrayFromStorage(sessionHistory, "Folders example")
+                );
+              }}
+            >
+              Folders example
+            </NavLink>
+          </NavItem>
         </Nav>
       </Container>
 
@@ -282,6 +300,7 @@ const App = () => {
           WebWorkerComponent
           <Route exact path="/web-worker" element={<WebWorkerComponent />} />
           <Route exact path="/infinite-scroll" element={<InfiniteScroll />} />
+          <Route exact path="/folders" element={<FileStructure />} />
         </Routes>
       </TabContent>
     </div>
